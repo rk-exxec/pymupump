@@ -1,1 +1,1 @@
-from  .pymupump import Chain, Microliter
+from  .pymupump import Chain, Microliter, PumpError
