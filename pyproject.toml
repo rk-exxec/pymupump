@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pymupump"
+version = "0.1.0"
+dependencies = [
+    "pyserial"
+]
+requires-python = ">=3.6"
+authors = [
+  {name = "Raphael Kriegl"},
+]
+
+description = "Python interface for controlling Harvard Apparatus Microliter OEM Syringe Pump"
+readme = "README.md"
+# license = {file = "LICENSE"}
+keywords = ["pump control", "harvard apparatus", "microliter OEM"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
+
+[project.urls]
+Homepage = "https://github.com/rk-exxec/pymupump"
+Issues = "https://github.com/rk-exxec/pymupump/issues"
+
+# [project.scripts]
+# ez-port-forward = "ez_port_forward:main"
+# ezpf = "ez_port_forward:main"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = [
+    "."
+]
