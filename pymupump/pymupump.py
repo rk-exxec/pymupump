@@ -47,8 +47,8 @@ class Chain(serial.Serial):
     buffers (found during testing that this fixes a lot of problems) and
     logs creation of the Chain.
     """
-    def __init__(self, port='COM1'):
-        super.__init__(self,port=port, stopbits=serial.STOPBITS_TWO, parity=serial.PARITY_NONE, timeout=2)
+    def __init__(self, port):
+        super().__init__(port=port, stopbits=serial.STOPBITS_TWO, parity=serial.PARITY_NONE, timeout=2)
         self.flushOutput()
         self.flushInput()
         logging.info(f'Chain created on {port}')
