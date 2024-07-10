@@ -85,8 +85,7 @@ class Microliter:
             resp = self.read(17)
 
             if int(resp[-3:-1]) != int(self.address):
-                raise PumpError('No response from pump at address %s' %
-                                self.address)
+                raise PumpError(f'No response from pump at address {self.address}')
         except PumpError:
             self.serialcon.close()
             raise
@@ -254,7 +253,7 @@ class Microliter:
         resp = self.query('RUN')
         if not '>' in resp:
             raise PumpError(f"{self.name}: Pump did not start infuse!: {resp}")  
-        logging.info(f'{self.name}: infusing',self.name)
+        logging.info(f'{self.name}: infusing')
 
     def withdraw(self):
         """Start withdrawing pump."""
@@ -263,7 +262,7 @@ class Microliter:
         resp = self.query('RUNW')
         if not '<' in resp:
             raise PumpError(f"{self.name}: Pump did not start withdraw!: {resp}")
-        logging.info(f'{self.name}: withdrawing',self.name)
+        logging.info(f'{self.name}: withdrawing')
 
     def stop(self):
         """ stop pump movement """
@@ -297,7 +296,7 @@ class Microliter:
 
     def waituntiltarget(self):
         """Wait until the pump has reached its target volume."""
-        logging.info(f'{self.name}: waiting until target reached',self.name)
+        logging.info(f'{self.name}: waiting until target reached')
         self._running = True
 
         try:
@@ -307,7 +306,7 @@ class Microliter:
 
         if not '<' in resp and not '>' in resp:
             raise PumpError(f'{self.name}: not infusing/withdrawing - infuse or '
-                            'withdraw first', self.name)
+                            'withdraw first')
 
         while self._running:
             try:
@@ -320,7 +319,7 @@ class Microliter:
                 pass
             sleep(0.1)
         
-        logging.info(f'{self.name}: stopped',self.name)
+        logging.info(f'{self.name}: stopped')
 
 
 class PumpError(Exception):
