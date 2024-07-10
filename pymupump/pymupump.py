@@ -127,10 +127,10 @@ class Microliter:
         :returns: bytes read from buffer
         """
         cntr = 0
-        sleep(0.05)
+        sleep(0.1)
         response = self.serialcon.read_all().decode().strip()
         while len(response) == 0 and wait and cntr < self._timeout:
-            sleep(0.05)
+            sleep(0.1)
             cntr += 1
             response = self.serialcon.read_all().decode().strip()
 
