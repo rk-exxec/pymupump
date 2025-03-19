@@ -66,7 +66,7 @@ class Microliter:
     def __init__(self, chain, address=0, name='Microliter'):
         self.name = name
         self.serialcon: serial.Serial = chain
-        self.address = '{0:02.0f}'.format(address)
+        self.address = f'{address:02.0f}'
         self.diameter = None
         self.flowrate = None
         self.targetvolume = None
@@ -289,8 +289,7 @@ class Microliter:
 
         if resp[-1] in ":<>*IWDT" or "*" in resp:
             self.targetvolume = float(targetvolume)
-            logging.info(f'{self.name}: target volume set to %s uL', self.name,
-                         self.targetvolume)
+            logging.info(f'{self.name}: target volume set to {self.targetvolume} uL')
         else:
             raise PumpError(f'{self.name}: unknown response: {resp}')
 
