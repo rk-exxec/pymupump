@@ -71,7 +71,7 @@ class Microliter:
         self.flowrate = None
         self.targetvolume = None
         self._running = False
-        self._timeout = 10
+        self._timeout = 20
         self._mutex = threading.Lock()
 
         """Query model and version number of firmware to check pump is
